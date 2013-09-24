@@ -1,0 +1,24 @@
+{
+  "name": "dom-binding",
+  "version": "0.0.0",
+  "description": "Simple one-way data binding to the DOM",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "DOM",
+    "Binding",
+    "Data"
+  ],
+  "author": "Arian Stolwijk",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "expect.js": "~0.2.0",
+    "wrapup": "~0.12.1"
+  }
+}
