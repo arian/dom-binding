@@ -1,6 +1,6 @@
 {
   "name": "dom-binding",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple one-way data binding to the DOM",
   "main": "index.js",
   "directories": {
