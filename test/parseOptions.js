@@ -1,7 +1,7 @@
 "use strict";
 
 var expect = require('expect.js');
-var parse = require('../parseOptions');
+var parse = require('../parseOptionsParser').parse;
 
 describe('parseOptions', function(){
 

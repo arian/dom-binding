@@ -1,6 +1,9 @@
 "use strict";
 
-var parseOptions = require('./parseOptions');
+var parseOptions = function(str){
+	if (str == null) return {};
+	return require('./parseOptionsParser').parse(str);
+};
 
 var Binding = module.exports = function(dom){
 	this.dom = dom;

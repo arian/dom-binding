@@ -1,0 +1,39 @@
+// Not using this yet, but could potentially work too if the grammar is a bit
+// extended
+
+start
+  = item
+  / obj
+
+item
+  = key:key space? ":" space? val:obj space? items:restItem* {
+      var result = {}; result[key] = val;
+      items.forEach(function(obj){
+        for (var key in obj) result[key] = obj[key];
+      });
+      return result;
+    }
+
+restItem
+  = "," space? thing:item space? { return thing }
+
+obj
+  = value
+  / string
+  / "{" space? items:item space? "}" { return items; }
+
+string
+  = '"' chars:(!'"' ("\\\\" / '\\"' / .))* '"' {
+      return chars.map(function(x){
+        return x.join("");
+      }).join("").replace('\\"', '\"');
+    }
+
+value "value"
+  = chars:[0-9a-zA-Z\.-_]+ { return chars.join(""); }
+
+key "key"
+  = chars:[0-9a-zA-Z-_]+ { return chars.join(""); }
+
+space
+ = [ \t\n\s\r]*
