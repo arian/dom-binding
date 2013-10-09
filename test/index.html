@@ -14,8 +14,8 @@
 <div id="test">
 	<div id="bind-title" data-bind="title"></div>
 	<div id="bind-author" data-bind="book.author"></div>
-	<div id="bind-year" data-bind="book.year" data-bind-default="1998"></div>
-	<div id="bind-pages" data-bind="book.pages" data-bind-attr="title">x</div>
+	<div id="bind-year" data-bind="book.year" data-bind-options="defaults: {html: 1998}"></div>
+	<div id="bind-pages" data-bind="title: book.pages">x</div>
 </div>
 
 </body>

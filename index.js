@@ -1,5 +1,7 @@
 "use strict";
 
+var parseOptions = require('./parseOptions');
+
 var Binding = module.exports = function(dom){
 	this.dom = dom;
 };
@@ -19,17 +21,23 @@ Binding.prototype.apply = function(data){
 };
 
 Binding.prototype._applyNode = function(node, data){
-	var property = node.getAttribute('data-bind');
-	var attribute = node.getAttribute('data-bind-attr') || 'html';
-	var _default = node.getAttribute('data-bind-default');
+	var properties = parseOptions(node.getAttribute('data-bind'));
+	var options = parseOptions(node.getAttribute('data-bind-options'));
 
-	var value = fromPath(data, property);
-	if (value === null) value = _default;
+	if (typeof properties == 'string'){
+		properties = {html: properties};
+	}
 
-	var setter = Binding.attributes[attribute];
+	for (var property in properties){
+		var value = fromPath(data, properties[property]);
+		if (value == null) value = options.defaults && options.defaults[property] || '';
 
-	if (setter) setter(node, value);
-	else node.setAttribute(attribute, value);
+		var setter = Binding.attributes[property];
+
+		if (setter) setter(node, value);
+		else node.setAttribute(property, value);
+	}
+
 };
 
 Binding.attributes = {

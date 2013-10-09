@@ -1,6 +1,7 @@
 {
   "node": true,
   "browser": true,
+  "eqnull": true,
   "predef": {
     "describe": true,
     "it": true
