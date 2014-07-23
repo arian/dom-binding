@@ -24,6 +24,7 @@ describe('Binding', function(){
 		expect(gEBID('bind-year').innerHTML).to.be('1998');
 		expect(gEBID('bind-pages').innerHTML).to.be('x');
 		expect(gEBID('bind-pages').getAttribute('title')).to.be('96');
+		expect(gEBID('bind-empty').innerHTML).to.be('y');
 	});
 
 });

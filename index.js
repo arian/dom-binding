@@ -30,7 +30,10 @@ Binding.prototype._applyNode = function(node, data){
 
 	for (var property in properties){
 		var value = fromPath(data, properties[property]);
-		if (value == null) value = options.defaults && options.defaults[property] || '';
+		if (value == null && options && options.defaults && options.defaults[property]){
+			value = options.defaults[property];
+		}
+		if (value == null) continue;
 
 		var setter = Binding.attributes[property];
 
