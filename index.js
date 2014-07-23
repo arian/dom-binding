@@ -7,7 +7,7 @@ var Binding = module.exports = function(dom){
 };
 
 Binding.prototype.$ = function(selector){
-	return $(this.dom, selector);
+	return Binding.$(this.dom, selector);
 };
 
 Binding.prototype.apply = function(data){
